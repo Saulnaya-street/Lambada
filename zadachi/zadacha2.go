@@ -11,26 +11,28 @@ import "fmt"
 //Длина окружности: 2 * π * Radius
 //Создай несколько кругов и посчитай их площадь и длину окружности.
 
-type Redan struct {
+type Circle struct {
 	Radius float64
 }
 
-func Area(p *Redan, a float64) {
-	R := a * p.Radius * p.Radius
+const Pi = 3.14
+
+func Area(c *Circle) {
+	R := Pi * c.Radius * c.Radius
 	fmt.Println(R)
 }
-func Perimeter(p *Redan, z float64, a float64) {
-	var P = z * a * p.Radius
+func Perimeter(c *Circle) {
+	var P = 2 * Pi * c.Radius
 	fmt.Println(P)
 }
 
 func main() {
-	redan := Redan{
+	circle := Circle{
 		Radius: 2.0,
 	}
 
-	Area(&redan, 3.14)
-	Perimeter(&redan, 2.0, 3.14)
-	fmt.Println(redan.Radius)
+	Area(&circle)
+	Perimeter(&circle)
+	fmt.Println(circle.Radius)
 
 }

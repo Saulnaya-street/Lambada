@@ -9,23 +9,28 @@ import "fmt"
 //Создай метод для структуры Employee, который выводит информацию о работнике (имя, возраст, должность).
 //Создай несколько работников и выведи их информацию.
 
-type Borov struct {
+type Person struct {
 	Name string
 	Age  int
 }
 
-type Pizdec struct {
-	Borov
+type Employee struct {
+	Person
 	Position string
 }
 
+func InfoEmployee(e *Employee) {
+	fmt.Printf("Имя: %s \nВозраст: %d\nДолжность: %s\n", e.Person.Name, e.Person.Age, e.Position)
+
+}
+
 func main() {
-	pizdec := Pizdec{
-		Borov: Borov{
+	employee := Employee{
+		Person: Person{
 			Name: "Slavik",
 			Age:  20,
 		},
 		Position: "Boss",
 	}
-	fmt.Printf("Имя %s годы жизни %d должность %s. /n ", pizdec.Name, pizdec.Age, pizdec.Position)
+	InfoEmployee(&employee)
 }

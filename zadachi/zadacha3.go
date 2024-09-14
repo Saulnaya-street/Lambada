@@ -9,28 +9,29 @@ import "fmt"
 //Напиши функцию, которая выводит полную информацию о человеке, включая его адрес.
 //Создай несколько экземпляров структуры Person с адресами и выведи информацию о них.
 
-type OPG struct {
+type Address struct {
 	Cyty   string
 	Street string
 }
-type Kaban struct {
+type Person struct {
 	Name string
 	Age  int
+	Address
 }
 
-func DayZ(z *OPG, x *OPG, c *Kaban, v *Kaban) {
-	fmt.Println(z.Cyty, x.Street, c.Name, v.Age)
+func InfoPerson(p *Person) {
+	fmt.Printf("Имя: %s \nВозраст: %d\nГород: %s\nУлица: %s\n", p.Name, p.Age, p.Address.Cyty, p.Address.Street)
 
 }
 
 func main() {
-	opg := OPG{
-		Cyty:   "Laryak",
-		Street: "Svinay",
+	person := Person{
+		Name: "Sanya",
+		Age:  12,
+		Address: Address{
+			Cyty:   "Laryak",
+			Street: "Svinay",
+		},
 	}
-	kaban := Kaban{
-		Name: "Danil",
-		Age:  27,
-	}
-	DayZ(&opg, &opg, &kaban, &kaban)
+	InfoPerson(&person)
 }

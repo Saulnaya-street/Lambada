@@ -9,23 +9,27 @@ import "fmt"
 //Напиши метод для структуры Product, который уменьшает количество товара на складе при его продаже.
 //Создай несколько товаров и напиши функцию для вывода информации о каждом товаре и его наличии на складе.
 
-type Tovary struct {
-	Name  string
-	Babky float64
-	Kolvo int
+type Product struct {
+	Name    string
+	Price   int64
+	InStock int
 }
 
-func plus(z *Tovary, a int) {
-	z.Kolvo = z.Kolvo - a
+func MinusInStok(p *Product, a int) {
+	p.InStock = p.InStock - a
+}
+func InfoProduct(p *Product) {
+	fmt.Printf("Название товара: %s \nцена товара: %d\nколичество: %d\n", p.Name, p.Price, p.InStock)
 }
 
 func main() {
-	tovary := Tovary{
-		Name:  "ганжубас",
-		Babky: 50,
-		Kolvo: 100,
+	product := Product{
+		Name:    "ганжубас",
+		Price:   50,
+		InStock: 100,
 	}
-	fmt.Printf("Было товара %d. \n", tovary.Kolvo)
-	plus(&tovary, 5)
-	fmt.Printf("Осталось товара %d.", tovary.Kolvo)
+	fmt.Printf("Было товара %d. \n", product.InStock)
+	MinusInStok(&product, 5)
+	fmt.Printf("Осталось товара %d. \n", product.InStock)
+	InfoProduct(&product)
 }

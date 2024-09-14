@@ -10,23 +10,33 @@ import "fmt"
 //Напиши метод для структуры Order, который считает общую сумму заказа (умножает цену товара на количество).
 //Создай несколько заказов и посчитай их общую стоимость.
 
-type Order struct {
-	Product string
-	Kolvo   int
-	Obchag  float64
+type Product struct {
+	Name    string
+	Price   int64
+	InStock int
 }
 
-func minus(z *Order, a float64) float64 {
-	c := a * float64(z.Kolvo)
-	fmt.Println(c)
-	return c
+type Order struct {
+	Product
+	Quantity   int
+	TotalPrice int64
+}
+
+func InfoSumOrder(o *Order) int64 {
+	o.TotalPrice = (o.Product.Price * int64(o.Quantity)) / 100
+	fmt.Println(o.TotalPrice)
+	return o.TotalPrice
 }
 
 func main() {
 	order := Order{
-		Product: "ганжубас",
-		Kolvo:   50,
-		Obchag:  100.0,
+		Product: Product{
+			Name:    "какашка",
+			Price:   600,
+			InStock: 60,
+		},
+		Quantity:   40,
+		TotalPrice: 400,
 	}
-	minus(&order, 50.0)
+	InfoSumOrder(&order)
 }
